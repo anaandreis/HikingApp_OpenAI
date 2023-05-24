@@ -4,25 +4,15 @@ import android.app.Application
 import android.location.Geocoder
 import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.anaandreis.minhastrilhas.data.SearchData
 import com.anaandreis.trilhaopenai.data.models.ApiClient
 import com.anaandreis.trilhaopenai.data.models.CompletionRequest
 import com.anaandreis.trilhaopenai.data.models.CompletionResponse
 import com.google.android.gms.maps.model.LatLng
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeout
@@ -43,16 +33,15 @@ class SearchViewModel(application: Application) : AndroidViewModel(application) 
     val places: MutableList<String> = _places
 
     private val _isMarkersLoaded = MutableStateFlow(false)
-    val isMarkersLoaded: StateFlow<Boolean> = _isMarkersLoaded.asStateFlow()
 
     private var _isPlacesLoaded = MutableStateFlow(false)
-    val isPlacesLoaded: StateFlow<Boolean> = _isPlacesLoaded.asStateFlow()
+
 
 
     fun createSearchMessage(where: String, difficulty: String, Goal: String) {
         resetSearch()
         message = "Me passe uma lista de cinco trilhas, separadas por vírgulas, (sem nenhuma outra informação, introdução, numeração ou conclusao em sua resposta) somente com o nome de trilhas em ${where} de nível de dificuldade ${difficulty} e que são boas para ${Goal}."
-        Log.d("SEARCH", "$message")
+        Log.d("SEARCH", message)
 
         callApi(message)
 
