@@ -13,4 +13,4 @@ Geocoding is used to determine the coordinates of the selected trails and marker
 
 Android app made with ❤️ and Kotlin, JetpackCompose, Retrofit, OpenAI API and Google Maps API 
 
-![HikingAppimage](https://github.com/anaandreis/HikingApp_OpenAI/assets/116083867/574f039c-3d0f-41c3-bd8b-b6a6a52a1e55)
+![TilhasIMAGE](https://github.com/anaandreis/HikingApp_OpenAI/assets/116083867/a56b3f42-4ba6-4cbe-a085-68fb9357bbf6)
